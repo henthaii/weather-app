@@ -3,11 +3,17 @@
 // then function response
 // catch function console.error();
 
+// const container = query need to make const that targets container and then target data to it
+
 fetch ('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Lewisville?unitGroup=us&key=JPG5TASYBNQ5RGAXP7T8GE2YP&contentType=json')
     .then(function(response) {
-        // return response.json();
-        console.log("Yes");
+        return response.json();
+    })
+    .then(function(data) {
+        //populate the container with the data
+        console.log(data);
     })
     .catch(function(err) {
         console.log("No");
     });
+
