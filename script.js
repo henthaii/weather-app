@@ -9,14 +9,21 @@
 //function will have to take input from field
 
 function searchSubmit() {
-    const container = projectElement.querySelector(".container");
-    const form = projectElement.querySelector("#search-form");
+    const container = document.querySelector(".container");
+    const form = document.querySelector("#search-form");
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         console.log("test");
+        //need to extract data next from field
+        //can i put the data from here to the fetch function
     })
+    //add fetch section to here? or maybe inside form listener
+    //needs to pull the search function data
+    //then needs to populate the container with info
 }
+
+searchSubmit();
 
 fetch ('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Lewisville?unitGroup=us&key=JPG5TASYBNQ5RGAXP7T8GE2YP&contentType=json')
     .then(function(response) {
