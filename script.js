@@ -15,7 +15,8 @@ function searchSubmit() {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         console.log("test");
-        //need to extract data next from field
+        //need to extract data from field
+        //do i use the formdata.get? pretty sure i do
         //can i put the data from here to the fetch function
     })
     //add fetch section to here? or maybe inside form listener
