@@ -15,19 +15,28 @@ async function searchSubmit() {
         const container = document.querySelector(".container");
         const form = document.querySelector("#search-form");
 
-        await form.addEventListener('submit', (event) => {
+        form.addEventListener('submit', (event) => {
             event.preventDefault();
-            function getSearch(element) {
-                const formData = new FormData(element);
-                return formData.get("search");
-            }
-            console.log(formData.get("search"));
-        //need to extract data from field
-        //do i use the formdata.get? pretty sure i do
-        //can i put the data from here to the fetch function
-        //convert this to an async function and implement await
-        //definitely not a promise
-        });
+            
+            const formData = new FormData(form);
+            const searchValue = formData.get("search");
+            
+            console.log(searchValue);
+            });
+
+        fetch ('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + 'Lewisville' + '?unitGroup=us&key=JPG5TASYBNQ5RGAXP7T8GE2YP&contentType=json')
+            .then(function(response) {
+                return response.json();
+                //need to extract form data into where lewisville is
+            })
+            .then(function(data) {
+                //populate the container with the data
+                console.log(data);
+            })
+            .catch(function(err) {
+                console.log("No");
+            });
+
     } catch (error) {
         console.error("Error",error);
     }
@@ -35,19 +44,4 @@ async function searchSubmit() {
     //needs to pull the search function data
     //then needs to populate the container with info
 }
-
-searchSubmit();
-
-fetch ('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + 'Lewisville' + '?unitGroup=us&key=JPG5TASYBNQ5RGAXP7T8GE2YP&contentType=json')
-    .then(function(response) {
-        return response.json();
-        //need to extract form data into where lewisville is
-    })
-    .then(function(data) {
-        //populate the container with the data
-        console.log(data);
-    })
-    .catch(function(err) {
-        console.log("No");
-    });
-
+// searchSubmit();
