@@ -21,27 +21,22 @@ async function searchSubmit() {
             const formData = new FormData(form);
             const searchValue = formData.get("search");
             
+            fetch ('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + 'searchValue' + '?unitGroup=us&key=JPG5TASYBNQ5RGAXP7T8GE2YP&contentType=json')
+                .then(function(response) {
+                    return response.json();
+                    //need to extract form data into where lewisville is
+                })
+                .then(function(data) {
+                    //populate the container with the data
+                    console.log(data);
+                })
+                .catch(function(err) {
+                    console.log("No");
+                });
             console.log(searchValue);
             });
-
-        fetch ('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + 'Lewisville' + '?unitGroup=us&key=JPG5TASYBNQ5RGAXP7T8GE2YP&contentType=json')
-            .then(function(response) {
-                return response.json();
-                //need to extract form data into where lewisville is
-            })
-            .then(function(data) {
-                //populate the container with the data
-                console.log(data);
-            })
-            .catch(function(err) {
-                console.log("No");
-            });
-
     } catch (error) {
         console.error("Error",error);
     }
-    //add fetch section to here? or maybe inside form listener
-    //needs to pull the search function data
-    //then needs to populate the container with info
 }
 // searchSubmit();
