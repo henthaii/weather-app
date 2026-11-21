@@ -15,13 +15,13 @@ async function searchSubmit() {
         const container = document.querySelector(".container");
         const form = document.querySelector("#search-form");
 
-        form.addEventListener('submit', (event) => {
+        form.addEventListener("submit", (event) => {
             event.preventDefault();
             
             const formData = new FormData(form);
             const searchValue = formData.get("search");
             
-            fetch ('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + 'searchValue' + '?unitGroup=us&key=JPG5TASYBNQ5RGAXP7T8GE2YP&contentType=json')
+            fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchValue}?unitGroup=us&key=JPG5TASYBNQ5RGAXP7T8GE2YP&contentType=json`)
                 .then(function(response) {
                     return response.json();
                     //need to extract form data into where lewisville is
@@ -39,4 +39,4 @@ async function searchSubmit() {
         console.error("Error",error);
     }
 }
-// searchSubmit();
+searchSubmit();
