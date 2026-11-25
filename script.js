@@ -12,7 +12,6 @@
 
 async function searchSubmit() {
     try {
-        const container = document.querySelector(".container");
         const form = document.querySelector("#search-form");
 
         form.addEventListener("submit", (event) => {
@@ -20,6 +19,7 @@ async function searchSubmit() {
             
             const formData = new FormData(form);
             const searchValue = formData.get("search");
+            const container = document.querySelector(".container");
             
             fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchValue}?unitGroup=us&key=JPG5TASYBNQ5RGAXP7T8GE2YP&contentType=json`)
                 .then(function(response) {
@@ -28,6 +28,11 @@ async function searchSubmit() {
                 })
                 .then(function(data) {
                     //populate the container with the data
+                    container.innerHTML = '';
+                    const tempDisplay = document.createElement('p');
+                    tempDisplay.textContent = `Current Temp: ${data.currentConditions.temp}`
+                    container.appendChild(tempDisplay);
+                    
                     console.log(data);
                 })
                 .catch(function(err) {
