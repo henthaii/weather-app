@@ -27,12 +27,16 @@ async function searchSubmit() {
                     //need to extract form data into where lewisville is
                 })
                 .then(function(data) {
-                    //populate the container with the data
-                    container.innerHTML = '';
-                    const tempDisplay = document.createElement('p');
-                    tempDisplay.textContent = `Current Temp: ${data.currentConditions.temp}`
-                    container.appendChild(tempDisplay);
                     
+                    container.innerHTML = '';
+
+                    //Consts for data
+                    const tempDisplay = document.createElement('p');
+                    
+                    tempDisplay.textContent = `Current Temp: ${data.currentConditions.temp} F`;
+                    tempDisplay.innerHTML += `<button class="toggle">Toggle Temperature</button>`
+                    container.appendChild(tempDisplay);
+
                     console.log(data);
                 })
                 .catch(function(err) {
@@ -45,3 +49,16 @@ async function searchSubmit() {
     }
 }
 searchSubmit();
+
+function toggleTemp () {
+    const toggleButton = document.querySelector(".toggle");
+    const container = document.querySelector(".container");
+    toggleButton.addEventListener("click",(event) => {
+        container.textContent = '';
+        const tempDisplay = document.createElement('p');
+        const celsius = ${data.currentConditions.temp} - 32 * (5/9)
+                    
+        tempCelDisplay.textContent = `Current Temp: ${data.currentConditions.temp} F`;
+    })
+
+}
