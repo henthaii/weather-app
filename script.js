@@ -56,9 +56,13 @@ function toggleTemp () {
     toggleButton.addEventListener("click",(event) => {
         container.textContent = '';
         const tempDisplay = document.createElement('p');
-        const celsius = ${data.currentConditions.temp} - 32 * (5/9)
-                    
-        tempCelDisplay.textContent = `Current Temp: ${data.currentConditions.temp} F`;
+        const celsius = (data.currentConditions.temp) - 32 * (5/9);
+        const fahrenheit = `${data.currentConditions.temp}`
+        if (tempDisplay = `Current Temp: ${fahrenheit} F`) {
+            tempDisplay.textContent = `Current Temp: ${celsius} C`;
+        }   else {
+            tempDisplay.textContent = `Current Temp: ${fahrenheit} F`;
+        }    
+        container.appendChild(tempDisplay);
     })
-
 }
